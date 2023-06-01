@@ -1,3 +1,9 @@
+/*
+ * Almost unmodified example from https://docs.expo.dev/versions/latest/sdk/background-fetch/
+ *
+ * Only change is to log AppState.currentState
+ */
+
 import React from 'react';
 import { StyleSheet, Text, View, Button, AppState } from 'react-native';
 import * as BackgroundFetch from 'expo-background-fetch';
@@ -11,7 +17,7 @@ TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
   const now = Date.now();
 
     console.log(`Got background fetch call at date: ${new Date(now).toISOString()}`);
-    console.log("AppState.currentState=", AppState.currentState);
+    console.log(`AppState.currentState=${AppState.currentState}`);
 
   // Be sure to return the successful result type!
   return BackgroundFetch.BackgroundFetchResult.NewData;
