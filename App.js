@@ -11,6 +11,13 @@ import * as TaskManager from 'expo-task-manager';
 
 const BACKGROUND_FETCH_TASK = 'background-fetch';
 
+function bgFunction() {
+  setInterval(() => {
+    console.log(`bgFunction AppState.currentState=${AppState.currentState.padEnd(10, " ")} ${new Date().toISOString()}`);
+  },
+  10 * 1000)
+}
+
 // 1. Define the task by providing a name and the function that should be executed
 // Note: This needs to be called in the global scope (e.g outside of your React components)
 TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
@@ -27,6 +34,7 @@ TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
 // and some configuration options for how the background fetch should behave
 // Note: This does NOT need to be in the global scope and CAN be used in your React components!
 async function registerBackgroundFetchAsync() {
+  bgFunction();
   return BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
     minimumInterval: 60, // 1 minute, but normally takes longer
     stopOnTerminate: false, // android only,

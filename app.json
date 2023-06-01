@@ -15,13 +15,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "fetch"
+        ]
+      },
+      "bundleIdentifier": "com.pwellner.bgbug"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.pwellner.bgbug"
     },
     "web": {
       "favicon": "./assets/favicon.png"
